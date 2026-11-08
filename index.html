@@ -3,34 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GUNS and AMMO - Inventory & Hours</title>
+    <title>Quicksell Guns and Ammo - Inventory & Hours</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; line-height: 1.6; }
-        header { background-color: #222; color: #fff; text-align: center; padding: 2.5rem 1rem; border-bottom: 5px solid #d32f2f; }
-        h1 { margin: 0; font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-        p.subtitle { margin: 0.5rem 0 0 0; color: #aaa; font-style: italic; font-size: 1.1rem; }
+        header { background-color: #1a1a1a; color: #fff; text-align: center; padding: 2.5rem 1rem; border-bottom: 5px solid #c62828; }
+        h1 { margin: 0; font-size: 2.3rem; text-transform: uppercase; letter-spacing: 1.5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); color: #fff; }
+        p.subtitle { margin: 0.5rem 0 0 0; color: #bbb; font-style: italic; font-size: 1.1rem; }
         .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; box-sizing: border-box; }
         .info-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 2rem; }
         @media (min-width: 650px) { .info-grid { grid-template-columns: 1fr 1fr; } }
-        .card { background: #fff; padding: 1.5rem; border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 5px solid #d32f2f; }
-        .card h2 { margin-top: 0; color: #222; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; display: flex; align-items: center; gap: 8px; }
+        .card { background: #fff; padding: 1.5rem; border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 5px solid #c62828; }
+        .card h2 { margin-top: 0; color: #222; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
         ul { list-style: none; padding: 0; margin: 0; }
         li { padding: 0.6rem 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
         li:last-child { border: none; }
-        .status-badge { background-color: #e8f5e9; color: #2e7d32; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; }
-        .status-low { background-color: #fff3e0; color: #ef6c00; }
+        
+        /* Dropdown Category Styles */
         .inventory-section { background: #fff; padding: 2rem; border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 2rem; }
-        .inventory-section h2 { margin-top: 0; color: #d32f2f; text-transform: uppercase; letter-spacing: 1px; border-bottom: 2px solid #d32f2f; padding-bottom: 0.5rem; }
-        .item-category { margin-top: 1.5rem; font-weight: bold; color: #444; background: #f0f0f0; padding: 0.4rem 0.7rem; border-radius: 4px; border-left: 3px solid #666; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.5px; }
-        footer { background-color: #222; color: #ccc; text-align: center; padding: 2rem 1rem; font-size: 0.9rem; margin-top: 4rem; }
-        .disclaimer { font-size: 0.8rem; color: #ff8a80; max-width: 750px; margin: 1.2rem auto 0 auto; line-height: 1.5; border-top: 1px solid #444; padding-top: 1.2rem; text-align: justify; text-justify: inter-word; }
+        .inventory-section h2 { margin-top: 0; color: #c62828; text-transform: uppercase; letter-spacing: 1px; border-bottom: 2px solid #c62828; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+        .collapsible-btn { background-color: #222; color: white; cursor: pointer; padding: 1rem; width: 100%; border: none; text-align: left; outline: none; font-size: 1.1rem; font-weight: bold; border-radius: 4px; margin-top: 0.8rem; display: flex; justify-content: space-between; align-items: center; text-transform: uppercase; transition: background-color 0.2s; }
+        .collapsible-btn:hover { background-color: #c62828; }
+        .collapsible-btn::after { content: '\002B'; font-size: 1.3rem; font-weight: bold; }
+        .active-btn { background-color: #c62828; }
+        .active-btn::after { content: "\2212"; }
+        .dropdown-content { padding: 0 1rem; max-height: 0; overflow: hidden; transition: max-height 0.2s ease-out; background-color: #fafafa; border-radius: 0 0 4px 4px; }
+        .status-badge { background-color: #e8f5e9; color: #2e7d32; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; }
+        
+        footer { background-color: #1a1a1a; color: #ccc; text-align: center; padding: 2rem 1rem; font-size: 0.9rem; margin-top: 4rem; }
+        .disclaimer { font-size: 0.8rem; color: #ff8a80; max-width: 750px; margin: 1.2rem auto 0 auto; line-height: 1.5; border-top: 1px solid #444; padding-top: 1.2rem; text-align: justify; }
+        a.phone-link { color: inherit; text-decoration: none; }
+        a.phone-link:hover { color: #c62828; text-decoration: underline; }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>GUNS and AMMO</h1>
-        <p class="subtitle">Local Inventory Showcase & FFL Store Information</p>
+        <h1>Quicksell Guns and Ammo</h1>
+        <p class="subtitle">Westport, Indiana - Local Inventory Showcase & FFL Information</p>
     </header>
 
     <div class="container">
@@ -39,50 +48,79 @@
             <div class="card">
                 <h2>🕒 Store Hours</h2>
                 <ul>
-                    <li><span>Monday - Friday</span> <strong>9:00 AM - 6:00 PM</strong></li>
-                    <li><span>Saturday</span> <strong>10:00 AM - 4:00 PM</strong></li>
+                    <li><span>Monday - Saturday</span> <strong>8:00 AM - 5:00 PM</strong></li>
                     <li><span>Sunday</span> <strong>Closed</strong></li>
                 </ul>
             </div>
             
             <div class="card">
                 <h2>📍 Location & Contact</h2>
-                <p><strong>Address:</strong> [Enter Physical Shop Address Here]</p>
-                <p><strong>Phone:</strong> [Enter Shop Phone Number Here]</p>
-                <p style="font-size: 0.9rem; color: #666; font-style: italic; margin-top: 1rem; background: #fff8e1; padding: 0.5rem; border-radius: 4px;">💡 Call ahead to verify real-time item availability before making the drive!</p>
+                <p><strong>Address:</strong> 13608 St Rd 3 South, Westport, IN 47283</p>
+                <p><strong>Phone:</strong> <a href="tel:18125913161" class="phone-link">1 (812) 591-3161</a></p>
+                <p style="font-size: 0.9rem; color: #666; font-style: italic; margin-top: 1rem; background: #fff8e1; padding: 0.5rem; border-radius: 4px;">💡 Click the phone number to call us directly and verify item availability!</p>
             </div>
         </div>
 
         <div class="inventory-section">
-            <h2>📦 In-Store Inventory Catalog</h2>
-            <p style="margin: 0 0 1rem 0; color: #666; font-style: italic;">List updated regularly. All layout models are subject to direct in-store availability.</p>
+            <h2>📦 Current Store Inventory</h2>
+            <p style="margin: 0 0 1rem 0; color: #666; font-style: italic;">Select a category below to browse our current stock layouts.</p>
             
-            <div class="item-category">Featured Firearms</div>
-            <ul>
-                <li><span>ArmaLite AR-50 Caliber Rifle</span> <span class="status-badge">In Stock</span></li>
-                <li><span>Ruger RXM Pistol (Model 19444)</span> <span class="status-badge">In Stock</span></li>
-                <li><span>Springfield Armory 1911 Pistol</span> <span class="status-badge">In Stock</span></li>
-                <li><span>HM Defense Raider MC5 AR Platform</span> <span class="status-badge status-low">Low Stock</span></li>
-                <li><span>Precision .308 Caliber Hunting Rifle</span> <span class="status-badge">In Stock</span></li>
-            </ul>
+            <!-- Category 1: Guns -->
+            <button class="collapsible-btn">🔫 Guns Inventory</button>
+            <div class="dropdown-content">
+                <ul>
+                    <li><span>ArmaLite AR-50 Caliber Rifle</span> <span class="status-badge">In Stock</span></li>
+                    <li><span>Ruger RXM Pistol (Model 19444)</span> <span class="status-badge">In Stock</span></li>
+                    <li><span>Springfield Armory 1911 Pistol</span> <span class="status-badge">In Stock</span></li>
+                    <li><span>Precision .308 Hunting Rifle</span> <span class="status-badge">In Stock</span></li>
+                </ul>
+            </div>
 
-            <div class="item-category">Ammunition & Premium Gear</div>
-            <ul>
-                <li><span>5.56 NATO Ammo Boxes</span> <span class="status-badge">In Stock</span></li>
-                <li><span>9mm Luger Range Ammo</span> <span class="status-badge">In Stock</span></li>
-                <li><span>Tactical Rifle Optics & Holosun Green Dots</span> <span class="status-badge">Available</span></li>
-                <li><span>Leather Appendix IWB Holsters</span> <span class="status-badge">In Stock</span></li>
-            </ul>
+            <!-- Category 2: Ammo -->
+            <button class="collapsible-btn">🎯 Ammunition</button>
+            <div class="dropdown-content">
+                <ul>
+                    <li><span>5.56 NATO Ammo Boxes</span> <span class="status-badge">In Stock</span></li>
+                    <li><span>9mm Luger Range Ammo</span> <span class="status-badge">In Stock</span></li>
+                    <li><span>12 Gauge Target Loads</span> <span class="status-badge">Available</span></li>
+                </ul>
+            </div>
+
+            <!-- Category 3: Parts -->
+            <button class="collapsible-btn">⚙️ Parts & Accessories</button>
+            <div class="dropdown-content">
+                <ul>
+                    <li><span>Tactical Rifle Optics & Sights</span> <span class="status-badge">Available</span></li>
+                    <li><span>AR-15 Custom Trigger Groups</span> <span class="status-badge">In Stock</span></li>
+                    <li><span>Leather Appendix IWB Holsters</span> <span class="status-badge">In Stock</span></li>
+                </ul>
+            </div>
         </div>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 GUNS and AMMO. All Rights Reserved.</p>
+        <p>&copy; 2026 Quicksell Guns and Ammo. All Rights Reserved.</p>
         <div class="disclaimer">
-            <strong>⚠️ IMPORTANT LEGAL NOTICE & DISCLAIMER:</strong> This website is strictly informational to showcase corporate operating hours and catalog lists of available inventory items. No e-commerce transactions, online payments, digital transfers, or weapon shipments are processed or executed on this platform. All firearm purchases, secondary background checks, and official documentation are completed strictly in person at our physical, licensed storefront location by an authorized FFL dealer in absolute compliance with all Federal, State, and Local firearms regulations.
+            <strong>⚠️ IMPORTANT LEGAL NOTICE & DISCLAIMER:</strong> This website is strictly informational to showcase corporate operating hours and catalog lists of available inventory items. No e-commerce transactions, online payments, digital transfers, or weapon shipments are processed or executed on this platform. All firearm purchases, transfers, background checks, and official documentation are completed strictly in person at our physical, licensed storefront location by an authorized FFL dealer in absolute compliance with all Federal, State, and Local firearms regulations.
         </div>
     </footer>
+
+    <!-- Script to make the dropdown buttons work interactively -->
+    <script>
+        var coll = document.getElementsByClassName("collapsible-btn");
+        for (var i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active-btn");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight){
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } 
+            });
+        }
+    </script>
 
 </body>
 </html>
