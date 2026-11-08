@@ -3,124 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quicksell Guns and Ammo - Inventory & Hours</title>
+    <title>Quicksell Guns & Ammo</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; line-height: 1.6; }
-        header { background-color: #1a1a1a; color: #fff; text-align: center; padding: 2.5rem 1rem; border-bottom: 5px solid #c62828; }
-        h1 { margin: 0; font-size: 2.3rem; text-transform: uppercase; letter-spacing: 1.5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); color: #fff; }
-        p.subtitle { margin: 0.5rem 0 0 0; color: #bbb; font-style: italic; font-size: 1.1rem; }
-        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; box-sizing: border-box; }
-        .info-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 2rem; }
-        @media (min-width: 650px) { .info-grid { grid-template-columns: 1fr 1fr; } }
-        .card { background: #fff; padding: 1.5rem; border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 5px solid #c62828; }
-        .card h2 { margin-top: 0; color: #222; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
-        ul { list-style: none; padding: 0; margin: 0; }
-        li { padding: 0.6rem 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
-        li:last-child { border: none; }
-        
-        /* Dropdown Category Styles */
-        .inventory-section { background: #fff; padding: 2rem; border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 2rem; }
-        .inventory-section h2 { margin-top: 0; color: #c62828; text-transform: uppercase; letter-spacing: 1px; border-bottom: 2px solid #c62828; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
-        .collapsible-btn { background-color: #222; color: white; cursor: pointer; padding: 1rem; width: 100%; border: none; text-align: left; outline: none; font-size: 1.1rem; font-weight: bold; border-radius: 4px; margin-top: 0.8rem; display: flex; justify-content: space-between; align-items: center; text-transform: uppercase; transition: background-color 0.2s; }
-        .collapsible-btn:hover { background-color: #c62828; }
-        .collapsible-btn::after { content: '\002B'; font-size: 1.3rem; font-weight: bold; }
-        .active-btn { background-color: #c62828; }
-        .active-btn::after { content: "\2212"; }
-        .dropdown-content { padding: 0 1rem; max-height: 0; overflow: hidden; transition: max-height 0.2s ease-out; background-color: #fafafa; border-radius: 0 0 4px 4px; }
-        .status-badge { background-color: #e8f5e9; color: #2e7d32; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; }
-        
-        footer { background-color: #1a1a1a; color: #ccc; text-align: center; padding: 2rem 1rem; font-size: 0.9rem; margin-top: 4rem; }
-        .disclaimer { font-size: 0.8rem; color: #ff8a80; max-width: 750px; margin: 1.2rem auto 0 auto; line-height: 1.5; border-top: 1px solid #444; padding-top: 1.2rem; text-align: justify; }
-        a.phone-link { color: inherit; text-decoration: none; }
-        a.phone-link:hover { color: #c62828; text-decoration: underline; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #34495e;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin: 0 15px;
+        }
+        .dropbtn {
+            background-color: #34495e;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown:hover .dropbtn {
+            background-color: #2980b9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
+        }
+        .info-section {
+            margin-bottom: 20px;
+        }
+        .info-section h2 {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 5px;
+            color: #2c3e50;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Quicksell Guns and Ammo</h1>
-        <p class="subtitle">Westport, Indiana - Local Inventory Showcase & FFL Information</p>
-    </header>
+<header>
+    <h1>Quicksell Guns & Ammo</h1>
+    <p>Your Premier Gunsmithing & Outfitting Partner</p>
+</header>
 
-    <div class="container">
-        
-        <div class="info-grid">
-            <div class="card">
-                <h2>🕒 Store Hours</h2>
-                <ul>
-                    <li><span>Monday - Saturday</span> <strong>8:00 AM - 5:00 PM</strong></li>
-                    <li><span>Sunday</span> <strong>Closed</strong></li>
-                </ul>
-            </div>
-            
-            <div class="card">
-                <h2>📍 Location & Contact</h2>
-                <p><strong>Address:</strong> 13608 St Rd 3 South, Westport, IN 47283</p>
-                <p><strong>Phone:</strong> <a href="tel:18125913161" class="phone-link">1 (812) 591-3161</a></p>
-                <p style="font-size: 0.9rem; color: #666; font-style: italic; margin-top: 1rem; background: #fff8e1; padding: 0.5rem; border-radius: 4px;">💡 Click the phone number to call us directly and verify item availability!</p>
-            </div>
+<nav>
+    <div class="dropdown">
+        <button class="dropbtn">Firearms</button>
+        <div class="dropdown-content">
+            <a href="#">Handguns</a>
+            <a href="#">Rifles</a>
+            <a href="#">Shotguns</a>
         </div>
-
-        <div class="inventory-section">
-            <h2>📦 Current Store Inventory</h2>
-            <p style="margin: 0 0 1rem 0; color: #666; font-style: italic;">Select a category below to browse our current stock layouts.</p>
-            
-            <!-- Category 1: Guns -->
-            <button class="collapsible-btn">🔫 Guns Inventory</button>
-            <div class="dropdown-content">
-                <ul>
-                    <li><span>ArmaLite AR-50 Caliber Rifle</span> <span class="status-badge">In Stock</span></li>
-                    <li><span>Ruger RXM Pistol (Model 19444)</span> <span class="status-badge">In Stock</span></li>
-                    <li><span>Springfield Armory 1911 Pistol</span> <span class="status-badge">In Stock</span></li>
-                    <li><span>Precision .308 Hunting Rifle</span> <span class="status-badge">In Stock</span></li>
-                </ul>
-            </div>
-
-            <!-- Category 2: Ammo -->
-            <button class="collapsible-btn">🎯 Ammunition</button>
-            <div class="dropdown-content">
-                <ul>
-                    <li><span>5.56 NATO Ammo Boxes</span> <span class="status-badge">In Stock</span></li>
-                    <li><span>9mm Luger Range Ammo</span> <span class="status-badge">In Stock</span></li>
-                    <li><span>12 Gauge Target Loads</span> <span class="status-badge">Available</span></li>
-                </ul>
-            </div>
-
-            <!-- Category 3: Parts -->
-            <button class="collapsible-btn">⚙️ Parts & Accessories</button>
-            <div class="dropdown-content">
-                <ul>
-                    <li><span>Tactical Rifle Optics & Sights</span> <span class="status-badge">Available</span></li>
-                    <li><span>AR-15 Custom Trigger Groups</span> <span class="status-badge">In Stock</span></li>
-                    <li><span>Leather Appendix IWB Holsters</span> <span class="status-badge">In Stock</span></li>
-                </ul>
-            </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Ammunition</button>
+        <div class="dropdown-content">
+            <a href="#">Pistol Ammo</a>
+            <a href="#">Rifle Ammo</a>
+            <a href="#">Shotgun Shells</a>
         </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Services</button>
+        <div class="dropdown-content">
+            <a href="#">Gunsmithing</a>
+            <a href="#">Taxidermy</a>
+        </div>
+    </div>
+</nav>
 
+<div class="container">
+    <div class="info-section">
+        <h2>About Us</h2>
+        <p>Quicksell Guns & Ammo is a licensed FFL dealer and professional gunsmithing shop based in Westport, Indiana. We offer expert firearm maintenance, customized tailoring, and local outfitting equipment for target shooting and hunting.</p>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Quicksell Guns and Ammo. All Rights Reserved.</p>
-        <div class="disclaimer">
-            <strong>⚠️ IMPORTANT LEGAL NOTICE & DISCLAIMER:</strong> This website is strictly informational to showcase corporate operating hours and catalog lists of available inventory items. No e-commerce transactions, online payments, digital transfers, or weapon shipments are processed or executed on this platform. All firearm purchases, transfers, background checks, and official documentation are completed strictly in person at our physical, licensed storefront location by an authorized FFL dealer in absolute compliance with all Federal, State, and Local firearms regulations.
-        </div>
-    </footer>
+    <div class="info-section">
+        <h2>Location & Contact</h2>
+        <p><strong>Address:</strong> 13608 ST RD 3 SOUTH, Westport, IN 47283</p>
+        <p><strong>Phone:</strong> (812) 591-3161</p>
+    </div>
 
-    <!-- Script to make the dropdown buttons work interactively -->
-    <script>
-        var coll = document.getElementsByClassName("collapsible-btn");
-        for (var i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function() {
-                this.classList.toggle("active-btn");
-                var content = this.nextElementSibling;
-                if (content.style.maxHeight){
-                    content.style.maxHeight = null;
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                } 
-            });
-        }
-    </script>
+    <div class="info-section">
+        <h2>Operating Hours</h2>
+        <ul>
+            <li><strong>Monday - Friday:</strong> 8:00 AM - 5:30 PM</li>
+            <li><strong>Saturday:</strong> 8:00 AM - 5:30 PM</li>
+            <li><strong>Sunday:</strong> Closed</li>
+        </ul>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 Quicksell Guns & Ammo. All Rights Reserved.</p>
+</footer>
 
 </body>
 </html>
