@@ -19,6 +19,12 @@
             text-align: center;
             border-bottom: 4px solid #cc0000;
         }
+        .logo-img {
+            max-width: 180px;
+            height: auto;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
         header h1 {
             margin: 0;
             font-size: 2.5em;
@@ -94,7 +100,7 @@
             background-color: #1a1a1a;
             border: 1px solid #2a2a2a;
             box-shadow: 0 0 15px rgba(0,0,0,0.5);
-            margin-bottom: 140px; /* Increased space to accommodate the disclaimer block above footer */
+            margin-bottom: 140px;
         }
         .info-section {
             margin-bottom: 25px;
@@ -114,6 +120,25 @@
         .info-section strong {
             color: #ffffff;
         }
+        
+        /* Catalog Display Elements */
+        .catalog-display {
+            text-align: center;
+            padding: 20px;
+            background: #111;
+            border: 1px dashed #cc0000;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+        .catalog-img {
+            max-width: 100%;
+            max-height: 400px;
+            height: auto;
+            border: 2px solid #2a2a2a;
+            margin-bottom: 15px;
+            display: none;
+        }
+        
         .legal-disclaimer {
             border-top: 1px solid #333;
             padding-top: 15px;
@@ -139,6 +164,8 @@
 <body>
 
 <header>
+    <!-- Change "logo.png" to match your exact file name if your phone renamed it (e.g. logo.jpg or logo.PNG) -->
+    <img src="logo.png" alt="Quicksell Guns & Ammo Logo" class="logo-img" onerror="this.style.display='none';"><br>
     <h1>Quicksell Guns & Ammo</h1>
     <p>Your Premier Gunsmithing & NFA Specialist</p>
 </header>
@@ -147,29 +174,38 @@
     <div class="dropdown">
         <button class="dropbtn">Firearms</button>
         <div class="dropdown-content">
-            <a href="#">Handguns</a>
-            <a href="#">Rifles</a>
-            <a href="#">Shotguns</a>
+            <a href="#" onclick="showCategory('Handguns', 'In-stock inventory changes daily. Visit the shop or call for active revolver and semi-automatic pistol selections.', 'handguns.jpg')">Handguns</a>
+            <a href="#" onclick="showCategory('Rifles', 'Precision bolt-action, hunting, and sporting rifles available. Custom configurations built to order.', 'rifles.jpg')">Rifles</a>
+            <a href="#" onclick="showCategory('Shotguns', 'Home defense, hunting, and tactical 12-gauge and 20-gauge options available.', 'shotguns.jpg')">Shotguns</a>
         </div>
     </div>
     <div class="dropdown">
         <button class="dropbtn">NFA Items</button>
         <div class="dropdown-content">
-            <a href="#">Suppressors</a>
-            <a href="#">SBRs / SBSs</a>
+            <a href="#" onclick="showCategory('Suppressors', 'Class 3 NFA suppressors on hand. Complete Form 4 registry and tax stamp filing assistance provided.', 'suppressors.jpg')">Suppressors</a>
+            <a href="#" onclick="showCategory('SBRs / SBSs', 'Short-barreled rifles and tactical specialty platforms built to specifications.', 'sbr.jpg')">SBRs / SBSs</a>
         </div>
     </div>
     <div class="dropdown">
         <button class="dropbtn">Services</button>
         <div class="dropdown-content">
-            <a href="#">Barrel Threading</a>
-            <a href="#">Custom Gunsmithing</a>
-            <a href="#">Restoration & Repairs</a>
+            <a href="#" onclick="showCategory('Barrel Threading', 'Professional lathe threading for suppressors, muzzle devices, and custom brakes on all barrel models.', 'threading.jpg')">Barrel Threading</a>
+            <a href="#" onclick="showCategory('Custom Gunsmithing', 'Complete custom work on historic, classic, and new platforms including slide modifications, sight installs, and triggers.', 'customwork.jpg')">Custom Gunsmithing</a>
         </div>
     </div>
 </nav>
 
 <div class="container">
+    
+    <!-- Dynamic Content Display Section -->
+    <div id="dynamic-content-box" class="info-section" style="display:none;">
+        <h2 id="category-title">Category Name</h2>
+        <div class="catalog-display">
+            <img id="category-image" src="" alt="Inventory Image" class="catalog-img">
+            <p id="category-description">Details about the inventory go here...</p>
+        </div>
+    </div>
+
     <div class="info-section">
         <h2>About Us</h2>
         <p>Quicksell Guns & Ammo is a licensed FFL dealer and professional gunsmithing shop based in Westport, Indiana. As a licensed SOT holder, we specialize in the sale and transfer of suppressors and other Class 3 NFA items. From expert barrel threading to precision custom work on both new and historic firearms, we handle your hardware with unmatched trade expertise.</p>
@@ -198,6 +234,25 @@
 <footer>
     <p>&copy; 2026 Quicksell Guns & Ammo. All Rights Reserved.</p>
 </footer>
+
+<script>
+    function showCategory(title, description, imageSrc) {
+        document.getElementById('dynamic-content-box').style.display = 'block';
+        document.getElementById('category-title').innerText = title;
+        document.getElementById('category-description').innerText = description;
+        
+        var imgElement = document.getElementById('category-image');
+        if(imageSrc !== '') {
+            imgElement.src = imageSrc;
+            imgElement.style.display = 'inline-block';
+        } else {
+            imgElement.src = '';
+            imgElement.style.display = 'none';
+        }
+        
+        document.getElementById('dynamic-content-box').scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
 
 </body>
 </html>
