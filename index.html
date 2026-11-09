@@ -15,26 +15,23 @@
         header {
             background-color: #000000;
             padding: 0;
+            margin: 0;
             text-align: center;
             border-bottom: 4px solid #cc0000;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             width: 100%;
         }
         .logo-img {
             width: 100%;
-            max-width: 1000px;
             height: auto;
+            max-height: 60vh;
+            object-fit: cover;
             display: block;
-            margin: 0 auto;
         }
         nav {
             background-color: #0d0d0d;
             display: flex;
             justify-content: center;
-            padding: 5px 10px;
+            padding: 10px;
             border-bottom: 1px solid #2a2a2a;
         }
         .dropdown {
@@ -83,28 +80,32 @@
             color: #cc0000;
         }
         .container {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 25px;
+            max-width: 100%;
+            margin: 0;
+            padding: 40px 20px;
             background-color: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            box-sizing: border-box;
             margin-bottom: 140px;
         }
+        .info-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
         .info-section {
-            margin-bottom: 25px;
+            margin-bottom: 35px;
         }
         .info-section h2 {
             border-bottom: 2px solid #cc0000;
-            padding-bottom: 5px;
+            padding-bottom: 8px;
             color: #ffffff;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 1.4em;
+            font-size: 1.6em;
         }
         .info-section p, .info-section li {
-            line-height: 1.6;
+            line-height: 1.8;
             color: #b3b3b3;
+            font-size: 1.1em;
         }
         .info-section strong {
             color: #ffffff;
@@ -112,7 +113,7 @@
         
         .catalog-display {
             text-align: center;
-            padding: 20px;
+            padding: 30px;
             background: #111;
             border: 1px dashed #cc0000;
             margin-top: 15px;
@@ -120,39 +121,40 @@
         }
         .catalog-img {
             max-width: 100%;
-            max-height: 400px;
+            max-height: 500px;
             height: auto;
             border: 2px solid #2a2a2a;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: none;
         }
         
         .legal-disclaimer {
             border-top: 1px solid #333;
-            padding-top: 15px;
-            margin-top: 30px;
-            font-size: 0.8em;
+            padding-top: 20px;
+            margin-top: 40px;
+            font-size: 0.85em;
             color: #888888;
-            line-height: 1.5;
+            line-height: 1.6;
             text-align: justify;
         }
         footer {
             background-color: #0d0d0d;
             color: #666666;
             text-align: center;
-            padding: 15px;
+            padding: 20px;
             position: fixed;
             bottom: 0;
             width: 100%;
             border-top: 1px solid #2a2a2a;
             font-size: 0.85em;
+            box-sizing: border-box;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="Screenshot_20261108_193543_Gmail.jpg" alt="Quicksell Guns & Ammo Logo" class="logo-img">
+    <img src="Screenshot_20261108_193543_Gmail.jpg" alt="Quicksell Guns & Ammo Header Banner" class="logo-img">
 </header>
 
 <nav>
@@ -181,37 +183,40 @@
 </nav>
 
 <div class="container">
-    
-    <div id="dynamic-content-box" class="info-section" style="display:none;">
-        <h2 id="category-title">Category Name</h2>
-        <div class="catalog-display">
-            <img id="category-image" src="" alt="Inventory Image" class="catalog-img">
-            <p id="category-description">Details about the inventory go here...</p>
+    <div class="info-wrapper">
+        
+        <!-- Dynamic Content Display Section -->
+        <div id="dynamic-content-box" class="info-section" style="display:none;">
+            <h2 id="category-title">Category Name</h2>
+            <div class="catalog-display">
+                <img id="category-image" src="" alt="Inventory Image" class="catalog-img">
+                <p id="category-description">Details about the inventory go here...</p>
+            </div>
         </div>
-    </div>
 
-    <div class="info-section">
-        <h2>About Us</h2>
-        <p>Quicksell Guns & Ammo is a licensed FFL dealer and professional gunsmithing shop based in Westport, Indiana. As a licensed SOT holder, we specialize in the sale and transfer of suppressors and other Class 3 NFA items. From expert barrel threading to precision custom work on both new and historic firearms, we handle your hardware with unmatched trade expertise.</p>
-    </div>
+        <div class="info-section">
+            <h2>About Us</h2>
+            <p>Quicksell Guns & Ammo is a licensed FFL dealer and professional gunsmithing shop based in Westport, Indiana. As a licensed SOT holder, we specialize in the sale and transfer of suppressors and other Class 3 NFA items. From expert barrel threading to precision custom work on both new and historic firearms, we handle your hardware with unmatched trade expertise.</p>
+        </div>
 
-    <div class="info-section">
-        <h2>Location & Contact</h2>
-        <p><strong>Address:</strong> 13608 ST RD 3 SOUTH, Westport, IN 47283</p>
-        <p><strong>Phone:</strong> (812) 591-3161</p>
-    </div>
+        <div class="info-section">
+            <h2>Location & Contact</h2>
+            <p><strong>Address:</strong> 13608 ST RD 3 SOUTH, Westport, IN 47283</p>
+            <p><strong>Phone:</strong> (812) 591-3161</p>
+        </div>
 
-    <div class="info-section">
-        <h2>Operating Hours</h2>
-        <ul>
-            <li><strong>Monday - Friday:</strong> 8:00 AM - 5:30 PM</li>
-            <li><strong>Saturday:</strong> 8:00 AM - 5:30 PM</li>
-            <li><strong>Sunday:</strong> Closed</li>
-        </ul>
-    </div>
+        <div class="info-section">
+            <h2>Operating Hours</h2>
+            <ul>
+                <li><strong>Monday - Friday:</strong> 8:00 AM - 5:30 PM</li>
+                <li><strong>Saturday:</strong> 8:00 AM - 5:30 PM</li>
+                <li><strong>Sunday:</strong> Closed</li>
+            </ul>
+        </div>
 
-    <div class="legal-disclaimer">
-        <p><strong>LEGAL DISCLAIMER:</strong> All firearm and NFA transfers, sales, and gunsmithing services are conducted strictly in compliance with federal, state, and local laws, including ATF regulations. Purchasers must successfully satisfy all local regulatory checks and federal NFA background criteria where applicable. Suppressors and Class 3 NFA items are strictly restricted and subject to specific application rules, registry filing, and tax stamp parameters before physical possession is transferred. This informational website does not directly process internet commerce or transactions.</p>
+        <div class="legal-disclaimer">
+            <p><strong>LEGAL DISCLAIMER:</strong> All firearm and NFA transfers, sales, and gunsmithing services are conducted strictly in compliance with federal, state, and local laws, including ATF regulations. Purchasers must successfully satisfy all local regulatory checks and federal NFA background criteria where applicable. Suppressors and Class 3 NFA items are strictly restricted and subject to specific application rules, registry filing, and tax stamp parameters before physical possession is transferred. This informational website does not directly process internet commerce or transactions.</p>
+        </div>
     </div>
 </div>
 
