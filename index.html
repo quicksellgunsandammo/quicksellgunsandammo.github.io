@@ -15,31 +15,16 @@
         header {
             background-color: #1a1a1a;
             color: #ffffff;
-            padding: 30px 20px;
+            padding: 40px 20px;
             text-align: center;
             border-bottom: 4px solid #cc0000;
         }
         .logo-img {
-            max-width: 180px;
+            max-width: 100%;
+            width: 320px; /* Controls header artwork sizing */
             height: auto;
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: #ffffff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-        }
-        header p {
-            margin: 5px 0 0 0;
-            color: #cc0000;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.9em;
+            margin: 0 auto;
+            display: block;
         }
         nav {
             background-color: #0d0d0d;
@@ -164,33 +149,31 @@
 <body>
 
 <header>
-    <!-- Change "logo.png" to match your exact file name if your phone renamed it (e.g. logo.jpg or logo.PNG) -->
-    <img src="logo.png" alt="Quicksell Guns & Ammo Logo" class="logo-img" onerror="this.style.display='none';"><br>
-    <h1>Quicksell Guns & Ammo</h1>
-    <p>Your Premier Gunsmithing & NFA Specialist</p>
+    <!-- Change "logo.png" below if your uploaded file has a different name -->
+    <img src="logo.png" alt="Quicksell Guns & Ammo Logo" class="logo-img">
 </header>
 
 <nav>
     <div class="dropdown">
         <button class="dropbtn">Firearms</button>
         <div class="dropdown-content">
-            <a href="#" onclick="showCategory('Handguns', 'In-stock inventory changes daily. Visit the shop or call for active revolver and semi-automatic pistol selections.', 'handguns.jpg')">Handguns</a>
-            <a href="#" onclick="showCategory('Rifles', 'Precision bolt-action, hunting, and sporting rifles available. Custom configurations built to order.', 'rifles.jpg')">Rifles</a>
-            <a href="#" onclick="showCategory('Shotguns', 'Home defense, hunting, and tactical 12-gauge and 20-gauge options available.', 'shotguns.jpg')">Shotguns</a>
+            <a href="#" onclick="showCategory('Handguns', 'In-stock inventory changes daily. Visit the shop or call for active revolver and semi-automatic pistol selections.', '')">Handguns</a>
+            <a href="#" onclick="showCategory('Rifles', 'Precision bolt-action, hunting, and sporting rifles available. Custom configurations built to order.', 'rifle.jpg')">Rifles</a>
+            <a href="#" onclick="showCategory('Shotguns', 'Home defense, hunting, and tactical 12-gauge and 20-gauge options available.', '')">Shotguns</a>
         </div>
     </div>
     <div class="dropdown">
         <button class="dropbtn">NFA Items</button>
         <div class="dropdown-content">
-            <a href="#" onclick="showCategory('Suppressors', 'Class 3 NFA suppressors on hand. Complete Form 4 registry and tax stamp filing assistance provided.', 'suppressors.jpg')">Suppressors</a>
-            <a href="#" onclick="showCategory('SBRs / SBSs', 'Short-barreled rifles and tactical specialty platforms built to specifications.', 'sbr.jpg')">SBRs / SBSs</a>
+            <a href="#" onclick="showCategory('Suppressors', 'Class 3 NFA suppressors on hand. Complete Form 4 registry and tax stamp filing assistance provided.', 'suppressor.jpg')">Suppressors</a>
+            <a href="#" onclick="showCategory('SBRs / SBSs', 'Short-barreled rifles and tactical specialty platforms built to specifications.', '')">SBRs / SBSs</a>
         </div>
     </div>
     <div class="dropdown">
         <button class="dropbtn">Services</button>
         <div class="dropdown-content">
-            <a href="#" onclick="showCategory('Barrel Threading', 'Professional lathe threading for suppressors, muzzle devices, and custom brakes on all barrel models.', 'threading.jpg')">Barrel Threading</a>
-            <a href="#" onclick="showCategory('Custom Gunsmithing', 'Complete custom work on historic, classic, and new platforms including slide modifications, sight installs, and triggers.', 'customwork.jpg')">Custom Gunsmithing</a>
+            <a href="#" onclick="showCategory('Barrel Threading', 'Professional lathe threading for suppressors, muzzle devices, and custom brakes on all barrel models.', '')">Barrel Threading</a>
+            <a href="#" onclick="showCategory('Custom Gunsmithing', 'Complete custom work on historic, classic, and new platforms including slide modifications, sight installs, and triggers.', '')">Custom Gunsmithing</a>
         </div>
     </div>
 </nav>
